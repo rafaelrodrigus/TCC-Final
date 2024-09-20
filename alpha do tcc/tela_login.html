@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Eventos - Login e Cadastro</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js" defer></script>
+    <style>
+        /* Estilos para os indicadores de mensagem */
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+        .success {
+            color: green;
+            font-size: 0.9em;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>SEXTOUU</h1>
+        <p>Conecte-se e descubra as melhores experiências!</p>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <form id="loginForm" class="login-form">
+                <h2>Login</h2>
+                <div class="input-group">
+                    <label for="username">Usuário</label>
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="password">Senha</label>
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" required>
+                    </div>
+                </div>
+                <button type="submit">Entrar</button>
+                <p id="loginMessage" class="hidden"></p>
+                <p>Não tem uma conta? <a href="#cadastro" class="toggle-form">Cadastre-se</a></p>
+            </form>
+
+            <form id="registerForm" class="register-form hidden">
+                <h2>Cadastro</h2>
+                <div class="input-group">
+                    <label for="newUsername">Usuário</label>
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="newUsername" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="newPassword">Senha (mínimo 6 dígitos)</label>
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="newPassword" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" required>
+                </div>
+                <button type="submit">Cadastrar</button>
+                <p id="registerMessage" class="hidden"></p>
+                <p>Já tem uma conta? <a href="#login" class="toggle-form">Faça login</a></p>
+            </form>
+        </div>
+
+        <div class="media">
+            <div id="lottie" class="lottie-animation"></div>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const animation = lottie.loadAnimation({
+                container: document.getElementById('lottie'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'https://lottie.host/9315d549-19c8-4367-a59d-d065cb7b6c88/fecJU87RBh.json'
+            });
+
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const toggleForms = document.querySelectorAll('.toggle-form');
+
+            toggleForms.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    loginForm.classList.toggle('hidden');
+                    registerForm.classList.toggle('hidden');
+                });
+            });
+
+            // Simulação de submissão do formulário de login
+            loginForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const loginMessage = document.getElementById('loginMessage');
+
+                // Simulação de validação
+                if (username === "usuario" && password === "senha") {
+                    loginMessage.textContent = "Login bem-sucedido!";
+                    loginMessage.className = "success";
+                } else {
+                    loginMessage.textContent = "Usuário ou senha incorretos.";
+                    loginMessage.className = "error";
+                }
+                loginMessage.classList.remove('hidden');
+            });
+
+            // Simulação de submissão do formulário de cadastro
+            registerForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const newUsername = document.getElementById('newUsername').value;
+                const newPassword = document.getElementById('newPassword').value;
+                const email = document.getElementById('email').value;
+                const registerMessage = document.getElementById('registerMessage');
+
+                // Validação da senha
+                if (newPassword.length < 6) {
+                    registerMessage.textContent = "A senha deve ter pelo menos 6 dígitos.";
+                    registerMessage.className = "error";
+                } else if (newUsername && newPassword && email) {
+                    registerMessage.textContent = "Cadastro realizado com sucesso!";
+                    registerMessage.className = "success";
+                    registerMessage.classList.remove('hidden');
+
+                    // Redireciona para a tela de login após 2 segundos
+                    setTimeout(() => {
+                        registerForm.classList.add('hidden');
+                        loginForm.classList.remove('hidden');
+                        registerMessage.classList.add('hidden');
+                    }, 2000);
+                } else {
+                    registerMessage.textContent = "Por favor, preencha todos os campos corretamente.";
+                    registerMessage.className = "error";
+                }
+                registerMessage.classList.remove('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

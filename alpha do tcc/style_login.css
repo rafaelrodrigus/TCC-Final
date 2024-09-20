@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #2c3e50, #4ca1af); /* Degradê noturno */
+    color: white; /* Texto claro para contraste */
+    display: flex;
+    flex-direction: column; /* Colocando os itens em coluna */
+    align-items: center; /* Centralizando os itens */
+    height: 100vh; /* Altura da tela */
+    justify-content: center; /* Centralizando verticalmente */
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 3em; /* Tamanho maior para o título */
+    color: #ffec40; /* Amarelo vibrante */
+}
+
+.header p {
+    font-size: 1.2em;
+    color: #ffffff; /* Texto da descrição em branco */
+}
+
+.container {
+    display: flex;
+    align-items: center; /* Alinhando os itens verticalmente */
+    background: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    width: 800px; /* Largura do contêiner */
+}
+
+.form-container {
+    width: 50%; /* Ajustando a largura do formulário */
+    padding: 20px; /* Padding para espaço interno */
+}
+
+.login-form, .register-form {
+    width: 100%;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-icon {
+    position: relative;
+}
+
+.input-icon i {
+    position: absolute;
+    left: 10px; /* Espaço da esquerda */
+    top: 50%; /* Centralizando verticalmente */
+    transform: translateY(-50%);
+    color: #ffffff; /* Cor do ícone */
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 10px 10px 40px; /* Ajustando padding para o ícone */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ffec40; /* Amarelo vibrante */
+    color: black; /* Texto escuro para contraste */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #f1c40f; /* Amarelo mais escuro ao passar o mouse */
+}
+
+#message, #registerMessage {
+    margin-top: 15px;
+    color: red;
+}
+
+.media {
+    width: 40%; /* Diminuindo a largura da animação para 40% */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lottie-animation {
+    width: 100%;
+    height: auto; /* Ajustando a altura para manter a proporção */
+}
+
+.hidden {
+    display: none;
+}
+.input-icon {
+    position: relative;
+}
+
+.input-icon i {
+    position: absolute;
+    left: 10px; /* Espaço da esquerda */
+    top: 50%; /* Centralizando verticalmente */
+    transform: translateY(-50%);
+    color: #0c0c0c; /* Cor do ícone */
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 10px 10px 40px; /* Ajustando padding para o ícone */
+    border: 1px solid #0c0b0b;
+    border-radius: 5px;
+}
